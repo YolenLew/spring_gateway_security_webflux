@@ -1,0 +1,51 @@
+server:
+  port: 8081
+spring:
+  application:
+    name: base-core
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+#修改此处：修改数据库、账号、密码3项
+    url: jdbc:mysql://127.0.0.1:3306/spring_gateway_security?characterEncoding=utf-8&useSSL=false&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true
+    username: userName111
+    password: passWord111
+  jackson:
+    time-zone: GMT+8
+    date-format: yyyy-MM-dd HH:mm:ss
+  #uoload file max size
+  servlet:
+    multipart:
+      max-file-size: 100MB
+  resources:
+    static-locations: classpath:/static
+#修改此处：请在自己机子上安装redis，并修改下面配置信息
+  redis:
+    database: 0
+    host: localhost
+    port: 6379
+    jedis:
+      pool:
+        max-active: 8
+        min-idle: 0
+        max-idle: 8
+        max-wait: -1
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:6001/eureka/
+
+  #mybatis
+mybatis:
+  mapper-locations: classpath:/mabits/mapper/*.xml
+  type-aliases-package: com.daybreak.basecore.entity
+  config-location: classpath:/mabits/mybatisconfg.xml
+
+#spring.redis.host=127.0.0.1
+#spring.redis.port=6379
+#spring.redis.password=123456
+#spring.redis.timeout=6000ms
+#spring.redis.lettuce.pool.max-active=8
+#spring.redis.lettuce.pool.max-wait=-1ms
+#spring.redis.lettuce.pool.min-idle=0
+#spring.redis.lettuce.pool.max-idle=8

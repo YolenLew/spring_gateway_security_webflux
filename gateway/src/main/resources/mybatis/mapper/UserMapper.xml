@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.daybreak.xian.gateway.dao.UserDao">
+
+    <resultMap id="userBean" type="com.daybreak.xian.commons_code.bean.UserInfo">
+        <result property="userName" column="USER_NAME" />
+        <result property="password" column="USER_PASS" />
+        <result property="role" column="USER_ROLE" />
+    </resultMap>
+
+    <select id="getUserByName" parameterType="string" resultMap="userBean">
+        SELECT
+            USER_NAME,
+            USER_PASS,
+            USER_ROLE
+        FROM
+            user_info
+        WHERE
+            USER_NAME = #{userName}
+    </select>
+
+</mapper>
